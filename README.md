@@ -19,4 +19,18 @@ Develop a system to generate realistic animation of rain and snow. The student s
     snow and rain will interact will objects as well (water splashing off the roof)
 
     How the program will flow:
-    No idea
+    I am not sure at the moment
+
+    Design of classes / data structures:
+    class for falling speed, air resistsance, gravity, direction, collision? 
+
+    Questions I am not sure about:
+
+    could I import my particle system into MAYA?
+    
+    I am not sure where to start, should I use the particle system you provided during the lectures as a base? or do I need to create new .h libraries for rain and snow?
+
+    does the particle test file you provided work on other particle systems?
+
+    Lastly, I am not sure how to set up the whole NGL setup. Could you tell me the about what are the first few steps i should do to sart my rain/snow particle system in order for me to follow up?
+    
