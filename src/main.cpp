@@ -5,7 +5,7 @@
 int main()
 {
   std::cout<<"Particle System\n";
-  Emitter e(10000);
+  Emitter e(100, 500);
   for(int i=0; i<250; ++i)
   {
     //std::cout<<"Frame "<<i<<'\n';
