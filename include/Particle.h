@@ -18,6 +18,7 @@ struct Particle
   Vec3 colour;
   int life=100;
   float size=0.01f;
+  bool isAlive = false;
 };
 
 
