@@ -3,22 +3,50 @@
 #include <fmt/format.h>
 #include <iostream>
 #include <fstream>
-Emitter::Emitter(int _numParticles)
+#include <algorithm>
+
+Emitter::Emitter(int _numParticles, int _maxAlive, float _rectWidth, float _rectHeight)
 {
-  m_particles.resize(_numParticles);
-  for(auto &p : m_particles)
-  {
-    p.pos=m_position;
-    p.dir=m_emitDir * Random::randomPositiveFloat() +
-      Random::randomVectorOnSphere() * m_spread;
-    p.dir.m_y = std::abs(p.dir.m_y);
-    p.colour = Random::randomPositiveVec3();
-    p.life = static_cast<int>(2.0f+Random::randomPositiveFloat(50));
-  }
+    // Initialize the rectangle dimensions
+    m_rectWidth = _rectWidth;
+    m_rectHeight = _rectHeight;
+
+    // Initialize particles
+    m_particles.resize(_numParticles);
+    m_maxAlive =_maxAlive;
+    for (auto& p : m_particles) {
+        // Randomly select a position within the rectangle
+        float xPos = m_position.m_x + Random::randomFloat() * m_rectWidth - m_rectWidth / 2.0f;
+        float zPos = m_position.m_z + Random::randomFloat() * m_rectHeight - m_rectHeight / 2.0f;
+
+        createDefaultParticle(p, xPos, zPos);
+    }
 }
 
-void Emitter::createDefaultParticle(Particle &p)
+void Emitter::createZeroParticle(Particle &_p, float xPos, float zPos)
 {
+    _p.pos = {0,0,0};
+    _p.size = 0.0f;
+    _p.dir = {0,0,0};
+    _p.isAlive = false;
+}
+
+void Emitter::createDefaultParticle(Particle &_p, float xPos, float zPos)
+{
+
+        // Set particle position to the selected position
+        _p.pos= {xPos, 10.0, zPos};
+
+        // Set particle direction to fall downwards
+        _p.dir = Vec3(0, -1.0f, 0);
+
+        // Adjust particle direction with some spread (if desired)
+        float spread = 15.0;
+        //_p.dir += Vec3(Random::randomFloat() * spread, 0, Random::randomFloat() * spread);
+        _p.colour = Random::randomPositiveVec3();
+        _p.life = static_cast<int>(2.0f+Random::randomPositiveFloat(50));
+        _p.size = 10.0f;
+        _p.isAlive = true;
 
 }
 void Emitter::render() const
@@ -36,20 +64,36 @@ void Emitter::update()
 //  pos += p.dir * _dt
 float _dt=0.1f;
 Vec3 gravity(0,-9.87, 0);
+static int numP = 0;
+//number of particles, set unalive as new particle
+int numberToBirth = 10+Random::randomPositiveFloat(50);
+
+for(int i=0; i<numberToBirth; ++i)
+{
+    for (auto &p : m_particles)
+    {
+        if(p.isAlive !=true)
+        {
+            createDefaultParticle(p, 0, 0);
+            break;
+        }
+    }
+}
   for(auto &p : m_particles)
   {
-    if(--p.life == 0 || p.pos.m_y <= 0.0)
+    if(p.isAlive == true)
     {
-      p.pos={0,0,0};
-      p.size=0.1;
-      p.dir = m_emitDir * Random::randomPositiveFloat() +
-              Random::randomVectorOnSphere() * m_spread;
-      p.life = static_cast<int>(2.0f+Random::randomPositiveFloat(50));
-    }
-    p.dir += gravity * _dt *0.5;
-    p.pos += p.dir *_dt;
-    p.size+=0.1f;
+        p.dir += gravity * _dt *0.5;
+        p.pos += p.dir *_dt;
+        p.size+=10.0f;
 
+        if(--p.life == 0 || p.pos.m_y <= 0.0)
+        {
+            //createDefaultParticle(p, xPos, yPos);
+            p.isAlive=false;
+            break;
+        }
+    }
   }
 }
 void Emitter::writeToGeo(std::string_view _fname)
@@ -82,6 +126,8 @@ void Emitter::writeToGeo(std::string_view _fname)
     file<<"beginExtra\nendExtra\n";
   }
 }
+
+
 
 
 
