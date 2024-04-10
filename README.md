@@ -24,13 +24,9 @@ Develop a system to generate realistic animation of rain and snow. The student s
     Design of classes / data structures:
     class for falling speed, air resistsance, gravity, direction, collision? 
 
-    Questions I am not sure about:
+    NEW Questions I am not sure about:
 
-    could I import my particle system into MAYA?
-    
-    I am not sure where to start, should I use the particle system you provided during the lectures as a base? or do I need to create new .h libraries for rain and snow?
+    My code right now generates particles that fall from the celling. However, the spheres appear to be extremely tiny in houdini and it is very laggy as well, im not sure why.
+    is there something wrong with my emitter and update function? since I called createDefaultParticle twice with different parameters. <333
 
-    does the particle test file you provided work on other particle systems?
-
-    Lastly, I am not sure how to set up the whole NGL setup. Could you tell me the about what are the first few steps i should do to sart my rain/snow particle system in order for me to follow up?
     
