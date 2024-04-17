@@ -45,7 +45,7 @@ void Emitter::createDefaultParticle(Particle &_p, float xPos, float zPos)
         //_p.dir += Vec3(Random::randomFloat() * spread, 0, Random::randomFloat() * spread);
         _p.colour = Random::randomPositiveVec3();
         _p.life = static_cast<int>(2.0f+Random::randomPositiveFloat(50));
-        _p.size = 10.0f;
+        _p.size = 0.1f;
         _p.isAlive = true;
 
 }
@@ -62,7 +62,7 @@ void Emitter::update()
 {
 // dir += gravity * _dt * 0.5f
 //  pos += p.dir * _dt
-float _dt=0.1f;
+float _dt=0.01f;
 Vec3 gravity(0,-9.87, 0);
 static int numP = 0;
 //number of particles, set unalive as new particle
@@ -85,7 +85,7 @@ for(int i=0; i<numberToBirth; ++i)
     {
         p.dir += gravity * _dt *0.5;
         p.pos += p.dir *_dt;
-        p.size+=10.0f;
+        p.size+=0.01f;
 
         if(--p.life == 0 || p.pos.m_y <= 0.0)
         {
@@ -126,8 +126,6 @@ void Emitter::writeToGeo(std::string_view _fname)
     file<<"beginExtra\nendExtra\n";
   }
 }
-
-
 
 
 
