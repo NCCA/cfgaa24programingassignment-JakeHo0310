@@ -1,5 +1,0 @@
-Particle.ctor 2 0.00137328
-Particle.userCtor 2 0.000936809
-Vec3.ctor 2 0.00110087
-Vec3.userCtor 2 0.0016868
----

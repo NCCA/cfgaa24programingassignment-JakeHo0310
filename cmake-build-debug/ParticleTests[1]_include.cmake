@@ -1,5 +1,0 @@
-if(EXISTS "/home/s5517330/Desktop/Particle/cmake-build-debug/ParticleTests[1]_tests.cmake")
-  include("/home/s5517330/Desktop/Particle/cmake-build-debug/ParticleTests[1]_tests.cmake")
-else()
-  add_test(ParticleTests_NOT_BUILT ParticleTests_NOT_BUILT)
-endif()
