@@ -2,6 +2,8 @@
 #include <ngl/Random.h>
 #include <fmt/format.h>
 #include <iostream>
+#include <vector>
+#include <cmath>
 #include <fstream>
 #include <algorithm>
 #include <ngl/Vec3.h>
@@ -11,6 +13,7 @@
 #include <ngl/VAOPrimitives.h>
 #include <ngl/VAOFactory.h>
 #include <ngl/NGLStream.h>
+
 Emitter::Emitter(int _numParticles, int _maxAlive, float _rectWidth, float _rectHeight)
 {
     // Initialize the rectangle dimensions
@@ -41,7 +44,7 @@ void Emitter::createDefaultParticle(Particle &_p, float xPos, float zPos)
   _p.dir.m_y = -1.0f;
   _p.colour =  ngl::Vec3{1.0f, 1.0f, 1.0f}; // White color
   _p.life = static_cast<int>(2.0f+ngl::Random::randomPositiveNumber(300));
-  _p.size= 0.05f + ngl::Random::randomPositiveNumber(0.05f);
+  _p.size= 0.1f + ngl::Random::randomPositiveNumber(0.1f);
   _p.rotation = ngl::Random::randomPositiveNumber(360.0f);
   _p.isAlive = true;
 }
@@ -66,6 +69,8 @@ void Emitter::render() const
     m_vao->setData(ngl::AbstractVAO::VertexData(m_particles.size()*sizeof(Particle),m_particles[0].pos.m_x));
     m_vao->setVertexAttributePointer(0,3,GL_FLOAT,sizeof(Particle),0);
     m_vao->setVertexAttributePointer(1,3,GL_FLOAT,sizeof(Particle),6);
+    m_vao->setVertexAttributePointer(2,1,GL_FLOAT,sizeof(Particle),8);
+
     m_vao->setNumIndices(m_particles.size());
     m_vao->draw();
     m_vao->unbind();
@@ -115,7 +120,7 @@ for(int i=0; i<numberToBirth; ++i)
     {
       p.dir += gravity * _dt * 0.5;
       p.pos += p.dir * _dt;
-      p.size += 0.01f;
+      p.size += 0.2f;
 
       if (--p.life == 0 )
       {

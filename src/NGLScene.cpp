@@ -6,6 +6,8 @@
 #include <iostream>
 #include <ngl/Util.h>
 #include <ngl/ShaderLib.h>
+#include <ngl/Mat4.h>
+
 
 NGLScene::NGLScene()
 {
@@ -42,8 +44,23 @@ void NGLScene::initializeGL()
   m_emitter=std::make_unique<Emitter>(1000,500);
  ngl::ShaderLib::loadShader("ParticleShader","shaders/ParticleVertex.glsl","shaders/ParticleFragment.glsl");
  ngl::ShaderLib::use("ParticleShader");
- m_view = ngl::lookAt({0,100,100},{0,0,0},{0,1,0});
+
+ // passing in camera parameters from the camera class
+ ngl::Vec3 camera_position(0.0f, 100.0f, 100.0f);
+ ngl::Vec3 camera_direction(0.0f, 0.0f, 0.0f);
+ ngl::Vec3 camera_orientation(0.0f, 1.0f, 0.0f);
+ Camera camera(camera_position, camera_direction, camera_orientation);
+ m_view = camera.getViewMatrix();
+
+//float cone_height = 20.0f; // Adjust height as needed
+//float cone_radius = 10.0f; // Adjust radius as needed
+//DoubleCone doubleCone(cone_height, cone_radius);
+    // Generate vertices for the double cone
+    //std::vector<ngl::Vec3> coneVertices = doubleCone.generateVertices(camera);
+
+ //m_view = ngl::lookAt({0,100,100},{0,0,0},{0,1,0});
   startTimer(10);
+    glEnable( GL_PROGRAM_POINT_SIZE );
 
 }
 
