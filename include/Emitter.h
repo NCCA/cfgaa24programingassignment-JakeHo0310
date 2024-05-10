@@ -1,38 +1,58 @@
 #ifndef EMITTER_H_
 #define EMITTER_H_
 
-#include <iostream>
-#include <cmath>
 #include <vector>
 #include <string_view>
-#include "Particle.h"
 #include <ngl/Vec3.h>
-#include <ngl/AbstractVAO.h>
+#include <ngl/MultiBufferVAO.h>
 #include <memory>
 #include <ngl/Util.h>
 #include <ngl/Mat4.h>
+#include <ngl/Random.h>
+#include <algorithm>
+#include <noise/noise.h>
+
+
 
 
 class Emitter
 {
 public :
-  Emitter(int _numParticles, int _maxAlive, float _rectWidth = 150.0f, float _rectHeight = 150.0f);
+  Emitter(int _numParticles, int _maxAlive);
   void update();
   void render() const;
-  void writeToGeo(std::string_view _fname);
+  //void writeToGeo(std::string_view _fname);
 private :
-    ngl::Vec3 randomVectorOnSphere();
-  void createDefaultParticle(Particle &_p,  float xPos, float zPos);
-  void createZeroParticle(Particle &_p);
-  std::vector<Particle> m_particles;
+  ngl::Vec3 randomVectorOnSphere();
+  void createDefaultParticle(size_t _p);
+  void createZeroParticle(size_t _p);
+  //void createMetorite(size_t _p);
+  size_t m_numParticles;
   ngl::Vec3 m_position={0,0,0};
   float m_spread = 15.0f;
   ngl::Vec3 m_emitDir = {0,20.0f,0};
   int m_maxAlive;
-  std::unique_ptr<ngl::AbstractVAO> m_vao;
+  std::unique_ptr<ngl::MultiBufferVAO> m_vao;
 
-    float m_rectWidth;    // Width of the rectangle
-    float m_rectHeight;   // Height of the rectangle
+    std::vector<ngl::Vec4> pos;
+    std::vector<ngl::Vec3>  dir;
+    std::vector<ngl::Vec3>  colour;
+    std::vector<int> life;
+    //std::vector<int> size;
+    std::vector<int> isAlive;
+    ngl::Vec3 windDir;
+
+    float m_rectWidth = 50.0f;    // Width of the rectangle
+    float m_rectHeight = 50.0f;   // Height of the rectangle
+
+    ngl::Vec3 randomVectorOnRectangle() const
+    {
+        float xPos = ngl::Random::randomNumber() * m_rectWidth - m_rectWidth / 2.0f;
+        float zPos = ngl::Random::randomNumber()* m_rectHeight - m_rectHeight / 2.0f;
+
+        return {xPos, 0.0f, zPos};
+    }
+
 };
 
 class Camera
@@ -61,6 +81,25 @@ private :
     ngl::Vec3 m_direction;
     ngl::Vec3 m_orientation;
 };
+
+class FlowField
+        {
+                public:
+                FlowField(int _width, int _height, int _depth);
+                ngl::Vec3 getFlowDirection(float _x, float _y, float _z); // Get flow direction at a given position
+
+                private:
+                // Add libnoise module variables for generating the flow field
+                noise::module::Perlin m_perlinModuleX;
+                noise::module::Perlin m_perlinModuleY;
+                noise::module::Perlin m_perlinModuleZ;
+
+                // Add flow field dimensions
+                int m_width;
+                int m_height;
+                int m_depth;
+        };
+
 
 class DoubleCone
 {
@@ -102,6 +141,5 @@ private :
     float camera_cone_distance;
 
 };
-
 
 #endif
