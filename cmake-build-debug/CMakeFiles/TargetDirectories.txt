@@ -1,6 +1,0 @@
-/home/s5517330/Desktop/cfgaa24programingassignment-JakeHo0310/cmake-build-debug/CMakeFiles/BlankNGL.dir
-/home/s5517330/Desktop/cfgaa24programingassignment-JakeHo0310/cmake-build-debug/CMakeFiles/BlankNGLCopyShaders.dir
-/home/s5517330/Desktop/cfgaa24programingassignment-JakeHo0310/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/s5517330/Desktop/cfgaa24programingassignment-JakeHo0310/cmake-build-debug/CMakeFiles/rebuild_cache.dir
-/home/s5517330/Desktop/cfgaa24programingassignment-JakeHo0310/cmake-build-debug/CMakeFiles/BlankNGL_autogen_timestamp_deps.dir
-/home/s5517330/Desktop/cfgaa24programingassignment-JakeHo0310/cmake-build-debug/CMakeFiles/BlankNGL_autogen.dir
