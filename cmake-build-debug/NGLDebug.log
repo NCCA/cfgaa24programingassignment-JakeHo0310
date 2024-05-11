@@ -1,0 +1,60 @@
+-------------------------------------------------------------------------------
+[07:59PM] NGL configured with 
+[07:59PM] OpenGL 4.3.0 NVIDIA 530.30.02
+[07:59PM] GLSL version 4.30 NVIDIA via Cg compiler
+-------------------------------------------------------------------------------
+[07:59PM] creating empty ShaderProgram nglTextShader
+[07:59PM] just attached nglTextVertex to ngl::ShaderLib
+[07:59PM] just attached nglTextFragment to ngl::ShaderLib
+[07:59PM] Compiling Shader nglTextVertex
+[07:59PM] Compiling Shader nglTextFragment
+[07:59PM] nglTextVertex attached to program
+[07:59PM] nglTextFragment attached to program
+[07:59PM] Linking nglTextShader
+[07:59PM] linking Shader nglTextShader 
+FOUND UNIFORM BLOCKS 0
+FOUND UNIFORM BLOCKS 0
+[07:59PM] creating empty ShaderProgram nglColourShader
+[07:59PM] just attached nglColourVertex to ngl::ShaderLib
+[07:59PM] just attached nglColourFragment to ngl::ShaderLib
+[07:59PM] Compiling Shader nglColourVertex
+[07:59PM] Compiling Shader nglColourFragment
+[07:59PM] nglColourVertex attached to program
+[07:59PM] nglColourFragment attached to program
+[07:59PM] Linking nglColourShader
+[07:59PM] linking Shader nglColourShader 
+FOUND UNIFORM BLOCKS 0
+FOUND UNIFORM BLOCKS 0
+[07:59PM] creating empty ShaderProgram nglDiffuseShader
+[07:59PM] just attached nglDiffuseVertex to ngl::ShaderLib
+[07:59PM] just attached nglDiffuseFragment to ngl::ShaderLib
+[07:59PM] Compiling Shader nglDiffuseVertex
+[07:59PM] Compiling Shader nglDiffuseFragment
+[07:59PM] nglDiffuseVertex attached to program
+[07:59PM] nglDiffuseFragment attached to program
+[07:59PM] Linking nglDiffuseShader
+[07:59PM] linking Shader nglDiffuseShader 
+FOUND UNIFORM BLOCKS 0
+FOUND UNIFORM BLOCKS 0
+[07:59PM] creating empty ShaderProgram nglCheckerShader
+[07:59PM] just attached nglCheckerVertex to ngl::ShaderLib
+[07:59PM] just attached nglCheckerFragment to ngl::ShaderLib
+[07:59PM] Compiling Shader nglCheckerVertex
+[07:59PM] Compiling Shader nglCheckerFragment
+[07:59PM] nglCheckerVertex attached to program
+[07:59PM] nglCheckerFragment attached to program
+[07:59PM] Linking nglCheckerShader
+[07:59PM] linking Shader nglCheckerShader 
+FOUND UNIFORM BLOCKS 0
+FOUND UNIFORM BLOCKS 0
+[07:59PM] creating empty ShaderProgram ParticleShader
+[07:59PM] just attached ParticleShaderVertex to ngl::ShaderLib
+[07:59PM] just attached ParticleShaderFragment to ngl::ShaderLib
+[07:59PM] Compiling Shader ParticleShaderVertex
+[07:59PM] Compiling Shader ParticleShaderFragment
+[07:59PM] ParticleShaderVertex attached to program
+[07:59PM] ParticleShaderFragment attached to program
+[07:59PM] Linking ParticleShader
+[07:59PM] linking Shader ParticleShader 
+FOUND UNIFORM BLOCKS 0
+[07:59PM] texture GL set texure ID is 1 Active Texture unit is 0
