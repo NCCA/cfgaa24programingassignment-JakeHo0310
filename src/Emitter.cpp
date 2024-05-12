@@ -1,9 +1,6 @@
 #include "Emitter.h"
 #include <ngl/Random.h>
 #include <fmt/format.h>
-#include <iostream>
-#include <fstream>
-#include <algorithm>
 #include <ngl/Util.h>
 #include <ngl/Transformation.h>
 #include <ngl/ShaderLib.h>
@@ -19,7 +16,6 @@ Emitter::Emitter(int _numParticles, int _maxAlive, int _colourType)
     dir.resize(m_numParticles);
     colour.resize(m_numParticles);
     life.resize(m_numParticles);
-    //size.resize(m_numParticles);
     isAlive.resize(m_numParticles);
     for(size_t i=0; i<m_numParticles; ++i)
     {
@@ -40,7 +36,6 @@ void Emitter::createZeroParticle(size_t _p)
 void Emitter::createDefaultParticle(size_t _p)
 {
   pos[_p]=m_position + randomVectorOnRectangle();
-  //dir[_p]=m_emitDir * ngl::Random::randomPositiveNumber() +randomVectorOnSphere() * m_spread;
   dir[_p].m_y = -2.0;
     life[_p] = static_cast<int>(500.0f+ngl::Random::randomPositiveNumber(750));
   pos[_p].m_y= 40.0f;
