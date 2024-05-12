@@ -11,7 +11,7 @@
 #include <ngl/Random.h>
 #include <algorithm>
 #include <noise/noise.h>
-#include <QObject> // Required for signals and slots
+#include <QObject>
 
 
 
@@ -31,18 +31,14 @@ private :
 
     size_t m_numParticles;
     int m_colourType;
-    int m_sizeType;
   ngl::Vec3 m_position={0,0,0};
-  float m_spread = 15.0f;
   ngl::Vec3 m_emitDir = {0,20.0f,0};
-  int m_maxAlive;
   std::unique_ptr<ngl::MultiBufferVAO> m_vao;
 
     std::vector<ngl::Vec4> pos;
     std::vector<ngl::Vec3>  dir;
     std::vector<ngl::Vec3>  colour;
     std::vector<int> life;
-    //std::vector<int> size;
     std::vector<int> isAlive;
     ngl::Vec3 windDir;
 
@@ -50,8 +46,8 @@ private :
     float m_rectHeight = 75.0f;   // Height of the rectangle
 
     // Define gradient colors
-    ngl::Vec4 m_gradientTopColor = ngl::Vec4(0.0f, 0.0f, 1.0f, 1.0f);   // Blue
-    ngl::Vec4 m_gradientBottomColor = ngl::Vec4(0.0f, 0.0f, 0.0f, 1.0f); // Black
+    // ngl::Vec4 m_gradientTopColor = ngl::Vec4(0.0f, 0.0f, 1.0f, 1.0f);   // Blue
+    // ngl::Vec4 m_gradientBottomColor = ngl::Vec4(0.0f, 0.0f, 0.0f, 1.0f); // Black
 
     ngl::Vec3 randomVectorOnRectangle() const
     {
