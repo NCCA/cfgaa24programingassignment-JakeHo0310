@@ -8,6 +8,7 @@
 #include <ngl/ShaderLib.h>
 #include <iostream>
 #include <ngl/Texture.h>
+#include <ngl/Obj.h>
 
 
 NGLScene::NGLScene()
@@ -58,6 +59,12 @@ void NGLScene::initializeGL()
     Camera camera(camera_position, camera_direction, camera_orientation);
     m_view = camera.getViewMatrix();
 
+    ngl::Obj tree("lp_xmas_tree_w_presents.obj");
+    tree.createVAO();
+    ngl::VAOPrimitives::loadObj("tree","lp_xmas_tree_w_presents.obj");
+    ngl::ShaderLib::loadShader("TreeShader","shaders/ParticleVertex.glsl","shaders/ParticleFragment.glsl");
+    ngl::ShaderLib::use("TreeShader");
+
     //float cone_height = 20.0f; // Adjust height as needed
     //float cone_radius = 10.0f; // Adjust radius as needed
     //DoubleCone doubleCone(cone_height, cone_radius);
@@ -74,6 +81,11 @@ void NGLScene::timerEvent(QTimerEvent *_event)
   update();
 }
 
+void NGLScene::loadMatricesToShader()
+{
+    ngl::Mat4 MVP =m_project*m_view * m_mouseGlobalTX;
+    ngl::ShaderLib::setUniform("MVP",MVP);
+}
 void NGLScene::paintGL()
 {
   // clear the screen and depth buffer
@@ -84,9 +96,11 @@ void NGLScene::paintGL()
   auto rotY = ngl::Mat4::rotateY(m_win.spinYFace);
   auto mouseRotation = rotX * rotY;
   mouseRotation.m_m[3][0] = m_modelPos.m_x;
-  mouseRotation.m_m[3][0] = m_modelPos.m_x;
-  mouseRotation.m_m[3][0] = m_modelPos.m_x;
+  mouseRotation.m_m[3][0] = m_modelPos.m_y;
+  mouseRotation.m_m[3][0] = m_modelPos.m_z;
 
+  loadMatricesToShader();
+  ngl::VAOPrimitives::draw("tree");
   ngl::ShaderLib::setUniform("MVP",m_project*m_view*mouseRotation);
   glPointSize(2);
   glBindTexture(GL_TEXTURE_2D, m_ptexture);
