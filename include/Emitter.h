@@ -33,6 +33,7 @@ private :
     int m_colourType;
   ngl::Vec3 m_position={0,0,0};
   ngl::Vec3 m_emitDir = {0,20.0f,0};
+  int m_maxAlive;
   std::unique_ptr<ngl::MultiBufferVAO> m_vao;
 
     std::vector<ngl::Vec4> pos;
