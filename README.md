@@ -37,9 +37,12 @@ noise and create a more coherent and gradual transition between adjacent positio
 For the snow texture, I used the gimp software to draw a snowflake texture. I created particle fragment and vertex 
 shaders and applied the png image on my particles. I also created different keys to change the colour of the particles.
 For example, the default colour is light blue for key 1, 2 for white, 3 for red, 4 for constant changing rainbow 
-snowflakes and 5 for black and white background.
+snowflakes and 5 for black and white background.The left mouse button also allows you to orient the camera, the right mouse 
+button allows you to zoom in. 
 
 Creating a 3D gradient background was also in my initial plan, I created a Background fragment and vertex shaders, I
 tried to add a quad in my scene and apply a colour gradient on it, unfortunately I didn't get it to work, I had some 
 issues with referencing the shaders.
 
+Here is a 30 second video of the final result:
+[SnowParticles.webm](https://github.com/NCCA/cfgaa24programingassignment-JakeHo0310/assets/160144686/74b6fb0c-ac65-4bc3-9684-b1c982396253)
