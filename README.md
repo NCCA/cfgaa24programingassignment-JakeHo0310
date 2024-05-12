@@ -18,6 +18,8 @@ showing snow textures on the screen. I created a class for Generating vertices a
 for creating a double cone shape. I then realised her method of rendering snow isn't exactly a particle system, so I 
 decided to take a look at perlin noise.
 
+I took great inspiration from this video: https://www.youtube.com/watch?v=na7LuZsW2UM 
+
 Perlin noise is used in computer graphics and procedural generation to create natural-looking textures. For instance, 
 snow. I first made a 3D space which I call the flow field. The flow field is essentially a three-dimensional grid, and
 at each point in this grid, Perlin noise is used to determine the flow direction of each snow particle. Perlin noise 
@@ -42,7 +44,8 @@ button allows you to zoom in.
 
 Creating a 3D gradient background was also in my initial plan, I created a Background fragment and vertex shaders, I
 tried to add a quad in my scene and apply a colour gradient on it, unfortunately I didn't get it to work, I had some 
-issues with referencing the shaders.
+issues with referencing the shaders. As for importing an obj file for generating a christmas tree in the scene. I used the obj.h 
+library from NGL, there were no erros, but it did not work as well.
 
 Here is a 30 second video of the final result:
 [SnowParticles.webm](https://github.com/NCCA/cfgaa24programingassignment-JakeHo0310/assets/160144686/74b6fb0c-ac65-4bc3-9684-b1c982396253)
