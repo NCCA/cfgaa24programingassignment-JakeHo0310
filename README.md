@@ -5,28 +5,10 @@ _Rain, snow flurries_
 The objective is to develop a system to generate animation of snow.
 
 
-Below are the initial class designs for this particle system:
+![classFlowChart](https://github.com/NCCA/cfgaa24programingassignment-JakeHo0310/assets/160144686/01a674ad-63a0-48ef-bfa6-f81165dcd324)
 
-+-------------------------------------+      +-------------------------------------+
-|              Emitter                |      |               Camera                |
-+-------------------------------------+      +-------------------------------------+
-| - Number of particles               |      |   X, Y, Z position                  |
-| - Type of colour                    |      | - Vector direction                  |
-| - Emitter position                  |      | - Camera orientation                |
-| - Emitter direction                 |      +-------------------------------------+
-| - Maximum particles on screen       |
-| - Wind direction                    |
-| - Particle lifespan                 |          
-+-------------------------------------+
 
-+----------------------------------+
-|              FlowField           |
-+----------------------------------+
-| - Perlin noise module            |
-| - Flow field width               |
-| - Flow field height              |
-| - Flow field depth               |
-+----------------------------------+
+
 
 I have done research on snow movements, how to flow and interact with air resistance. 
 I came across Niniane Wang, an American software engineer and technology executive, who used a technique 
