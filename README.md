@@ -25,7 +25,8 @@ generates values in the range of -1 to 1, this range is achieved through a combi
 interpolation techniques, resulting in smoothly varying values that oscillate around zero.
 
 3D perlin noise within a flow field grid:
-![img_1.png](img_1.png)
+![image](https://github.com/NCCA/cfgaa24programingassignment-JakeHo0310/assets/160144686/7be05f68-b3c0-4112-9685-b4484d6d108b)
+
 
 
 Examining the effects of my perlin noise, the particles are not flowing as smooth as i expected, so I created a simple
