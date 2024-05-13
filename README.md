@@ -9,7 +9,6 @@ The objective is to develop a system to generate animation of snow.
 
 
 
-
 I have done research on snow movements, how to flow and interact with air resistance. 
 I came across Niniane Wang, an American software engineer and technology executive, who used a technique 
 to render rain and snow in Microsoft Combat Flight Simulator 3 and Microsoft Flight Simulator 2004: A Century of Flight.
@@ -24,8 +23,7 @@ Perlin noise is used in computer graphics and procedural generation to create na
 snow. I first made a 3D space which I call the flow field. The flow field is essentially a three-dimensional grid, and
 at each point in this grid, Perlin noise is used to determine the flow direction of each snow particle. Perlin noise 
 generates values in the range of -1 to 1, this range is achieved through a combination of noise functions and 
-interpolation techniques, resulting in smoothly varying values that oscillate around zero.
-
+interpolation techniques, resulting in smoothly varying values that oscillate around zero. 
 3D perlin noise within a flow field grid:
 
 ![img_1](https://github.com/NCCA/cfgaa24programingassignment-JakeHo0310/assets/160144686/9a785791-4648-4d80-b884-b28ee46caa0a)
@@ -46,6 +44,10 @@ Creating a 3D gradient background was also in my initial plan, I created a Backg
 tried to add a quad in my scene and apply a colour gradient on it, unfortunately I didn't get it to work, I had some 
 issues with referencing the shaders. As for importing an obj file for generating a christmas tree in the scene. I used the obj.h 
 library from NGL, there were no erros, but it did not work as well.
+
+It is noteworthy to know that parts of my code (Perlin Noise function and colour change QT keys) were edited by ChatGPT, in order
+for me to better understand the logic behind the algorithm.
+
 
 Here is a 30 second video of the final result:
 [SnowParticles.webm](https://github.com/NCCA/cfgaa24programingassignment-JakeHo0310/assets/160144686/74b6fb0c-ac65-4bc3-9684-b1c982396253)
